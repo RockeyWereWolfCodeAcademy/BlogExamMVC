@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Slider Update";
+}
+
+@model AdminSliderUpdateVM
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <textarea asp-for="Description" class="form-control" placeholder="Enter description (up to 128 symbols)"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rating">Rating</label>
+                    <input class="form-control" asp-for="Rating" placeholder="Rate value (0-5)">
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                <img src="~/@Model.ImgUrl" width="200" height="200">
+                <br />
+                <div class="form-group">
+                    <label asp-for="ImageFile">Image(dont upload if you dont change it)</label>
+                    <input asp-for="ImageFile" accept="image/*">
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+

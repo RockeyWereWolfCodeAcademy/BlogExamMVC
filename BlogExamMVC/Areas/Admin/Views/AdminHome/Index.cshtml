@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Tables";
+}
+
+@model IEnumerable<AdminSliderListVM>
+               <!-- Begin Page Content -->
+<div class="container-fluid">
+
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Sliders</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <a asp-action="Create" asp-controller="AdminSlider" class="btn btn-outline-success">Create</a>
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Rating</th>
+                            <th colspan="2" class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var slider in Model) {
+                            <tr>
+                                <td>@slider.Id</td>
+                                <td><img src="~/@slider.ImgUrl" width="200" height="200"></td>
+                                <td>@slider.Description</td>
+                                <td>
+                                    @for(int i = 1; i<= slider.Rating; i++)
+                                    {
+                                        <i class="las la-star rating-star"></i>
+                                    }
+                                </td>
+                                <td><a asp-action="Delete" asp-controller="AdminSlider" asp-route-id="@slider.Id" class="btn btn-outline-danger">Delete</a></td>
+                                <td><a asp-action="Update" asp-controller="AdminSlider" asp-route-id="@slider.Id" class="btn btn-outline-info">Update</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
